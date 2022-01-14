@@ -6,54 +6,51 @@ const Books = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const getBooks = async () => {
-      const res = await axios.get(
-        `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.REACT_APP_BOOKS_API_KEY}`
-      );
-      setBooks(res.data.results.books);
-      console.log("books hook:", books);
-    };
-    getBooks();
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${process.env.REACT_APP_BOOKS_API_KEY}`
+      )
+      .then((info) => {
+        setBooks(info.data.items);
+      })
+      .catch((err) => {
+        console.log("Something went wrong", err);
+      });
   }, []);
+
+  console.log("books hook:", books);
 
   return (
     <div>
-      <h1 className="font-bold text-center text-4xl py-5">NYT Bestsellers</h1>
+      <h1 className="font-bold text-center text-4xl py-5">
+        Google Books Search
+      </h1>
+
       <section className="grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {books.map((book) => {
-          const {
-            age_group,
-            author,
-            book_image,
-            buy_links,
-            description,
-            primary_isbn10,
-            publisher,
-            rank,
-            title,
-          } = book;
-
           return (
-            <article
-              key={rank}
-              className="bg-gray-100 py-5 px-10 rounded-lg sm:px-5"
-            >
+            <article className="bg-gray-100 py-5 px-10 rounded-lg sm:px-5">
               <div>
-                <img src={book_image} alt={title} className="box-border h-64" />
+                <img
+                  src={book.volumeInfo.imageLinks}
+                  alt={book.volumeInfo.title}
+                  className="box-border h-64"
+                />
               </div>
               <div>
-                <h3 className="font-bold mt-2 my-2 text-2xl">{title}</h3>
-                <p className="mb-4">{description}</p>
-                <p>{author}</p>
+                <h3 className="font-bold mt-2 my-2 text-2xl">
+                  {book.volumeInfo.title}
+                </h3>
+                <p className="mb-4">{book.volumeInfo.description}</p>
+                <p>{book.volumeInfo.authors}</p>
               </div>
 
               <ul>
-                <li>Publisher: {publisher}</li>
-                <li>Age: {age_group}</li>
-                <li>ISBN: {primary_isbn10}</li>
+                <li>Publisher: {book.volumeInfo.publisher}</li>
+                <li>categories: {book.volumeInfo.categories}</li>
               </ul>
 
-              <ul>
+              {/* <ul>
                 <p className="font-bold text-l">Buy now:</p>
                 {buy_links.map((link) => {
                   const { name, url } = link;
@@ -70,7 +67,7 @@ const Books = () => {
                     </div>
                   );
                 })}
-              </ul>
+              </ul> */}
             </article>
           );
         })}
