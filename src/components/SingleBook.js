@@ -30,7 +30,7 @@ const SingleBook = (props) => {
 
   return (
     <div>
-      <img src={images.medium} className="box-border h-64" />
+      <img src={images.thumbnail} className="box-border h-64" />
       <h2>{book.title}</h2>
       <section>
         {authorName.map((name) => {
