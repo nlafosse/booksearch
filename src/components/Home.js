@@ -1,14 +1,12 @@
-import React from "react";
-import Books from "./Books";
-import { Route, Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
 const Home = () => {
-  const [title, setTitle] = React.useState("");
-  const [redirect, setRedirect] = React.useState(false);
+  const [title, setTitle] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const handleSearch = () => {
-    let searchTextMinusSpaces = title.split(" ").join("+");
-    setTitle(searchTextMinusSpaces);
+    setTitle(title.split(" ").join("+"));
     setRedirect(true);
   };
 
@@ -18,7 +16,7 @@ const Home = () => {
         <input
           type="text"
           value={title}
-          placeholder={"search book titles"}
+          placeholder={"title, author, isbn"}
           onChange={(e) => {
             setTitle(e.target.value);
           }}
@@ -27,14 +25,11 @@ const Home = () => {
       </div>
       <div className="gatorGif">
         <img
-          alt="Gator surrounded by books"
+          alt="gator surrounded by books"
           src="https://media0.giphy.com/media/9Dk2vkAmYs5dsSRu3B/giphy.gif"
         />
       </div>
-      <div>
-        <Route path="/books" component={() => <Books title={title} />} />
-        {redirect && <Redirect to={`/books/${title}`} />}
-      </div>
+      <div>{redirect && <Redirect to={`/books/${title}`} />}</div>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { CgExternal } from "react-icons/cg";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Books = (props) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    console.log(props);
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes?q=${props.match.params.title}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
@@ -29,6 +29,7 @@ const Books = (props) => {
 
       <section className="grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {books.map((book) => {
+          console.log("id:", book.id);
           return (
             <article className="bg-gray-100 py-5 px-10 rounded-lg sm:px-5">
               <div>
@@ -39,9 +40,11 @@ const Books = (props) => {
                 />
               </div>
               <div>
-                <h3 className="font-bold mt-2 my-2 text-2xl">
-                  {book.volumeInfo.title}
-                </h3>
+                <Link to={`/book/${book.id}`}>
+                  <h3 className="font-bold mt-2 my-2 text-2xl">
+                    {book.volumeInfo.title}
+                  </h3>
+                </Link>
                 <p className="mb-4">{book.volumeInfo.description}</p>
                 <p>{book.volumeInfo.authors}</p>
               </div>
