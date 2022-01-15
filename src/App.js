@@ -1,10 +1,10 @@
 import "./App.css";
-import Books from "./components/Books";
+import Main from "./components/Main";
 
 function App() {
   return (
     <div>
-      <Books />
+      <Main />
     </div>
   );
 }

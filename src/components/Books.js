@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { CgExternal } from "react-icons/cg";
 import axios from "axios";
 
-const Books = () => {
+const Books = (props) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
+    console.log(props);
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${process.env.REACT_APP_BOOKS_API_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${props.match.params.title}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
       )
       .then((info) => {
         setBooks(info.data.items);
@@ -16,7 +17,7 @@ const Books = () => {
       .catch((err) => {
         console.log("Something went wrong", err);
       });
-  }, []);
+  }, [props]);
 
   console.log("books hook:", books);
 
