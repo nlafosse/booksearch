@@ -1,9 +1,10 @@
 import React from "react";
+import { Route, Switch } from "react-router";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Books from "./Books";
 import SingleBook from "./SingleBook";
-import { Route, Switch } from "react-router";
+import Author from "./Author";
 
 const Main = () => {
   return (
@@ -24,6 +25,10 @@ const Main = () => {
           path="/book/:bookid"
           component={(props) => <SingleBook {...props} />}
         />
+        <Route
+          path="/author/:name"
+          component={(props) => <Author {...props} />}
+        />
         {/* <Route
           exact
           path="/subjects"
@@ -37,10 +42,6 @@ const Main = () => {
           exact
           path="/about"
           component={(props) => <About {...props} />}
-        /> */}
-        {/* <Route
-          path="/author/:person"
-          component={(props) => <Author {...props} />}
         /> */}
       </Switch>
     </div>
