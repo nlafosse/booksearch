@@ -11,7 +11,7 @@ const Main = () => {
     <div>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={(props) => <Home {...props} />} />
+        <Route exact path="/" component={() => <Home />} />
         <Route
           exact
           path="/books"
