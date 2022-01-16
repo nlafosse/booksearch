@@ -17,8 +17,14 @@ const NavBar = () => {
         <i className="fas fa-bars"></i>
       </div>
       <div className="flex flex-row mr-8 hidden md:flex">
-        <div className="text-gray-700 text-center px-4 py-2 m-2">Authors</div>
-        <div className="text-gray-700 text-center px-4 py-2 m-2">Subjects</div>
+        <Link to={"/authors"}>
+          <div className="text-gray-700 text-center px-4 py-2 m-2">Authors</div>
+        </Link>
+        <Link to={"/subjects"}>
+          <div className="text-gray-700 text-center px-4 py-2 m-2">
+            Subjects
+          </div>
+        </Link>
       </div>
     </div>
   );

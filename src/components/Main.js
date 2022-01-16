@@ -4,7 +4,10 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import Books from "./Books";
 import SingleBook from "./SingleBook";
+import Authors from "./Authors";
 import Author from "./Author";
+import Subjects from "./Subjects";
+import SingleSubject from "./SingleSubject";
 
 const Main = () => {
   return (
@@ -26,18 +29,23 @@ const Main = () => {
           component={(props) => <SingleBook {...props} />}
         />
         <Route
-          path="/author/:name"
+          exact
+          path="/authors"
+          component={(props) => <Authors {...props} />}
+        />
+        <Route
+          path="/authors/:name"
           component={(props) => <Author {...props} />}
         />
-        {/* <Route
+        <Route
           exact
           path="/subjects"
-          component={(props) => <Subject {...props} />}
-        /> */}
-        {/* <Route
-          path="/subject/:genre"
+          component={(props) => <Subjects {...props} />}
+        />
+        <Route
+          path="/subjects/:subject"
           component={(props) => <SingleSubject {...props} />}
-        /> */}
+        />
         {/* <Route
           exact
           path="/about"
