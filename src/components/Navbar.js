@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Searchbar from "./Searchbar";
 
 const NavBar = () => {
   return (
@@ -9,6 +10,8 @@ const NavBar = () => {
           <h3 className="font-bold mt-2 my-2 text-2xl">Booklisted</h3>
         </Link>
       </div>
+
+      <Searchbar />
 
       <div className="flex flex-row-reverse mr-4 ml-4 md:hidden">
         <i className="fas fa-bars"></i>
