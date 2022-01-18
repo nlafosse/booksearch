@@ -36,7 +36,7 @@ const SingleBook = (props) => {
         {authorName.map((name) => {
           return (
             <div>
-              <Link to={`/author/${name.split(" ").join("+")}`}>
+              <Link to={`/authors/${name.split(" ").join("+")}`}>
                 <h3 className="font-bold mt-2 my-2 text-2xl">{name}</h3>
               </Link>
             </div>

@@ -6,7 +6,6 @@ const Author = (props) => {
   const [author, setAuthor] = useState([]);
 
   useEffect(() => {
-    console.log("THIS BOOK'S PROPS:", props);
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes/?q=inauthor:${props.match.params.name}`

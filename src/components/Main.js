@@ -7,7 +7,7 @@ import SingleBook from "./SingleBook";
 import Authors from "./Authors";
 import Author from "./Author";
 import Subjects from "./Subjects";
-import SingleSubject from "./SingleSubject";
+import Subject from "./Subject";
 
 const Main = () => {
   return (
@@ -44,7 +44,7 @@ const Main = () => {
         />
         <Route
           path="/subjects/:subject"
-          component={(props) => <SingleSubject {...props} />}
+          component={(props) => <Subject {...props} />}
         />
         {/* <Route
           exact
