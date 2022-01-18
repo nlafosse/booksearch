@@ -4,23 +4,23 @@ import Searchbar from "./Searchbar";
 
 const NavBar = () => {
   return (
-    <div className="w-screen flex flex-row items-center p-1 justify-between bg-white shadow-xs">
-      <div className="ml-8 text-lg text-gray-700 hidden md:flex">
+    <div>
+      <div>
         <Link to={"/"}>
-          <h3 className="font-bold mt-2 my-2 text-2xl">Booklisted</h3>
+          <h3 className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
+            Booklisted
+          </h3>
         </Link>
       </div>
 
       <Searchbar />
 
-      <div className="flex flex-row mr-8 hidden md:flex">
+      <div>
         <Link to={"/authors"}>
-          <div className="text-gray-700 text-center px-4 py-2 m-2">Authors</div>
+          <div>Authors</div>
         </Link>
         <Link to={"/subjects"}>
-          <div className="text-gray-700 text-center px-4 py-2 m-2">
-            Subjects
-          </div>
+          <div>Subjects</div>
         </Link>
       </div>
     </div>
