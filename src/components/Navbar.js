@@ -4,7 +4,7 @@ import Searchbar from "./Searchbar";
 
 const NavBar = () => {
   return (
-    <div>
+    <div className="container">
       <div>
         <Link to={"/"}>
           <h3 className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">
