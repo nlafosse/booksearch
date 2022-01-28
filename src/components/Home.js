@@ -2,8 +2,8 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="flex flex-col justify-center">
-      <div>
+    <div className="container mx-auto bg-grey-100">
+      <div className="flex justify-center ">
         <h1>HOME</h1>
         <img
           alt="gator surrounded by books"
