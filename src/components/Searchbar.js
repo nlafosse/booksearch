@@ -13,7 +13,7 @@ const Searchbar = () => {
   };
 
   return (
-    <span className="w-screen md:w-1/3 h-10 bg-gray-200 cursor-pointer border border-gray-300 text-sm rounded-full flex">
+    <div className="mt-4 md:w-1/2 h-10 bg-orange-200 cursor-pointer border border-orange-300 text-sm rounded-full flex">
       <input
         type="text"
         value={text}
@@ -23,14 +23,11 @@ const Searchbar = () => {
           setText(e.target.value);
         }}
       />
-      <i
-        className="fas fa-search m-3 mr-5 text-lg text-gray-700 w-4 h-4"
-        onClick={handleSearch}
-      >
+      <i className="m-3 text-lg text-black w-4" onClick={handleSearch}>
         <BiSearchAlt />
       </i>
       {redirect && <Redirect to={`/books/${searchText}`} />}
-    </span>
+    </div>
   );
 };
 

@@ -15,17 +15,17 @@ const NavBar = () => {
       <div className="md:flex items-center justify-between bg-orange-300 py-4 md:px-10 px-7 font-[Poppins]">
         <div className="font-bold text-2xl cursor-pointer flex items-center  text-gray-800">
           <Link to={"/"}>
-            <h2 className="hover:text-white">Booklisted</h2>
+            <h2 className="hover:text-white pr-20">Booklisted</h2>
           </Link>
         </div>
+
         <Searchbar />
 
         <div
           onClick={() => setOpen(!open)}
-          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+          className="text-3xl absolute right-8 top-5 cursor-pointer md:hidden"
         >
           <button
-            name={open ? "close" : "menu"}
             type="button"
             class="block text-gray-800 hover:text-white focus:text-white focus:outline-none"
           >
