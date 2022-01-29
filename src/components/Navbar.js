@@ -1,29 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Searchbar from "./Searchbar";
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
+
+  let links = [
+    { name: "Authors", link: "/authors" },
+    { name: "Subjects", link: "/subjects" },
+  ];
+
   return (
-    <nav className="flex items-center justify-between bg-gray-300 text-black font-bold p-2 rounded">
-      <div className="hover:text-white">
-        <Link to={"/"}>
-          <h3>Booklisted</h3>
-        </Link>
-      </div>
-
-      <Searchbar />
-
-      <div className="flex flex-row">
-        <div className="hover:text-white">
-          <Link to={"/authors"}>Authors</Link>
+    <div className="shadow-md w-full fixed top-0 left-0">
+      <div className="md:flex items-center justify-between bg-orange-300 py-4 md:px-10 px-7 font-[Poppins]">
+        <div className="font-bold text-2xl cursor-pointer flex items-center  text-gray-800">
+          <Link to={"/"}>
+            <h2 className="hover:text-white">Booklisted</h2>
+          </Link>
         </div>
-        <div className="hover:text-white">
-          <Link to={"/subjects"}>Subjects</Link>
-        </div>
-        <div>
+        <Searchbar />
+
+        <div
+          onClick={() => setOpen(!open)}
+          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+        >
           <button
+            name={open ? "close" : "menu"}
             type="button"
-            class="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
+            class="block text-gray-800 hover:text-white focus:text-white focus:outline-none"
           >
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
               <path
@@ -33,27 +37,23 @@ const NavBar = () => {
             </svg>
           </button>
         </div>
+
+        <ul
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-20 opacity-100" : "top-[-490px]"
+          } md:opacity-100 opacity-0`}
+        >
+          {links.map((link) => (
+            <li
+              key={link.name}
+              className="md:ml-8 text-xl md:my-0 my-7 hover:text-white"
+            >
+              <Link to={link.link}>{link.name}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
-    </nav>
-
-    // <div className="flex bg-gray-300 text-black font-bold py-2 px-4 rounded">
-    //   <div className="hover:text-gray-200">
-    // <Link to={"/"}>
-    //   <h3>Booklisted</h3>
-    // </Link>
-    //   </div>
-
-    //   <Searchbar />
-
-    // <div className="flex flex-row justify-between">
-    //   <div className="hover:text-gray-200">
-    //     <Link to={"/authors"}>Authors</Link>
-    //   </div>
-    //   <div className="hover:text-gray-200">
-    //     <Link to={"/subjects"}>Subjects</Link>
-    //   </div>
-    // </div>
-    // </div>
+    </div>
   );
 };
 
