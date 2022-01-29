@@ -9,7 +9,6 @@ const Book = (props) => {
   const [authorName, setAuthorName] = useState([]);
 
   useEffect(() => {
-    console.log("THIS BOOK'S PROPS:", props);
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes/${props.match.params.bookid}`

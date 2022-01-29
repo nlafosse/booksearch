@@ -45,7 +45,6 @@ const Books = (props) => {
                     {book.volumeInfo.title}
                   </h3>
                 </Link>
-                <p className="mb-4">{book.volumeInfo.description}</p>
                 <p>{book.volumeInfo.authors}</p>
               </div>
 
