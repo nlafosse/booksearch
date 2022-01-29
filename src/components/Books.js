@@ -12,6 +12,7 @@ const Books = (props) => {
         `https://www.googleapis.com/books/v1/volumes?q=${props.match.params.title}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
       )
       .then((info) => {
+        console.log("info", info);
         setBooks(info.data.items);
       })
       .catch((err) => {
@@ -27,14 +28,13 @@ const Books = (props) => {
         Google Books Search
       </h1>
 
-      <section className="w-screen grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <section className="grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {books.map((book) => {
-          console.log("id:", book.id);
           return (
             <article className="bg-gray-100 py-5 px-10 rounded-lg sm:px-5">
               <div>
                 <img
-                  src={book.volumeInfo.imageLinks}
+                  src={book.volumeInfo.imageLinks.thumbnail}
                   alt={book.volumeInfo.title}
                   className="box-border h-64"
                 />

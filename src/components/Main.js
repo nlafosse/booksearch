@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import Books from "./Books";
-import SingleBook from "./SingleBook";
+import Book from "./Book";
 import Authors from "./Authors";
 import Author from "./Author";
 import Subjects from "./Subjects";
@@ -26,7 +26,7 @@ const Main = () => {
         />
         <Route
           path="/book/:bookid"
-          component={(props) => <SingleBook {...props} />}
+          component={(props) => <Book {...props} />}
         />
         <Route
           exact

@@ -12,8 +12,10 @@ const Searchbar = () => {
     setRedirect(true);
   };
 
+  console.log("key pressed", text);
+
   return (
-    <div className="mt-4 md:w-1/2 h-10 bg-orange-200 cursor-pointer border border-orange-300 text-sm rounded-full flex">
+    <div className="mt-4 md:mt-0 md:w-1/2 h-10 bg-orange-200 cursor-pointer border border-orange-300 text-sm rounded-full flex">
       <input
         type="text"
         value={text}
@@ -24,7 +26,7 @@ const Searchbar = () => {
         }}
         onKeyPress={(e) => {
           if (e.key === "Enter") {
-            handleSearch();
+            handleSearch(text);
           }
         }}
       />
