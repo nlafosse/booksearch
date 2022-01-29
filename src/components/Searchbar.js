@@ -22,6 +22,11 @@ const Searchbar = () => {
         onChange={(e) => {
           setText(e.target.value);
         }}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            handleSearch();
+          }
+        }}
       />
       <i className="m-3 text-lg text-black w-4" onClick={handleSearch}>
         <BiSearchAlt />
