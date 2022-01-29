@@ -45,12 +45,18 @@ const Books = (props) => {
                     {book.volumeInfo.title}
                   </h3>
                 </Link>
-                <p>{book.volumeInfo.authors}</p>
+
+                {book.volumeInfo.authors.map((name) => {
+                  return (
+                    <Link to={`/authors/${name.split(" ").join("+")}`}>
+                      <p>{book.volumeInfo.authors}</p>
+                    </Link>
+                  );
+                })}
               </div>
 
               <ul>
                 <li>Publisher: {book.volumeInfo.publisher}</li>
-                <li>categories: {book.volumeInfo.categories}</li>
               </ul>
 
               {/* <ul>
