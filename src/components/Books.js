@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CgExternal } from "react-icons/cg";
+import nocover from "../images/nocover.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -34,7 +35,11 @@ const Books = (props) => {
             <article className="bg-gray-100 py-5 px-10 rounded-lg sm:px-5">
               <div>
                 <img
-                  src={book.volumeInfo.imageLinks.thumbnail}
+                  src={
+                    book.volumeInfo.imageLinks
+                      ? book.volumeInfo.imageLinks.thumbnail
+                      : nocover
+                  }
                   alt={book.volumeInfo.title}
                   className="box-border h-64"
                 />
@@ -53,30 +58,8 @@ const Books = (props) => {
                     </Link>
                   );
                 })}
+                <p>Publisher: {book.volumeInfo.publisher}</p>
               </div>
-
-              <ul>
-                <li>Publisher: {book.volumeInfo.publisher}</li>
-              </ul>
-
-              {/* <ul>
-                <p className="font-bold text-l">Buy now:</p>
-                {buy_links.map((link) => {
-                  const { name, url } = link;
-                  return (
-                    <div key={name}>
-                      <a
-                        href={url}
-                        className="flex items-center"
-                        target="_blank"
-                        rel="noopenner noreferrer"
-                      >
-                        {name} <CgExternal className="ml-1" />
-                      </a>
-                    </div>
-                  );
-                })}
-              </ul> */}
             </article>
           );
         })}
