@@ -25,30 +25,22 @@ const NavBar = () => {
           onClick={() => setOpen(!open)}
           className="text-3xl absolute right-8 top-5 cursor-pointer md:hidden"
         >
-          <button
-            type="button"
-            className="block text-gray-800 hover:text-white focus:text-white focus:outline-none"
-          >
-            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              <path
-                fillRule="evenodd"
-                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-              />
-            </svg>
-          </button>
+          <ion-icon name={open ? "close" : "menu"}></ion-icon>
         </div>
 
         <ul
-          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-20 opacity-100" : "top-[-490px]"
-          } md:opacity-100 opacity-0`}
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static  bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-50 opacity-100" : "top-[-490px]"
+          } md:opacity-100 opacity-100`}
         >
           {links.map((link) => (
-            <li
-              key={link.name}
-              className="md:ml-8 text-xl md:my-0 my-7 hover:text-white"
-            >
-              <Link to={link.link}>{link.name}</Link>
+            <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
+              <Link
+                className="text-gray-800 hover:text-gray-400 duration-500"
+                to={link.link}
+              >
+                {link.name}
+              </Link>
             </li>
           ))}
         </ul>
