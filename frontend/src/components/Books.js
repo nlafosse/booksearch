@@ -25,14 +25,10 @@ const Books = (props) => {
 
   return (
     <div>
-      <h1 className="font-bold text-center text-4xl py-5">
-        Google Books Search
-      </h1>
-
-      <section className="grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <section className="relative mt-11 grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {books.map((book) => {
           return (
-            <article className="bg-gray-100 py-5 px-10 rounded-lg sm:px-5">
+            <article className="bg-amber-50 py-5 px-10 rounded-lg sm:px-5">
               <div>
                 <img
                   src={
@@ -46,7 +42,7 @@ const Books = (props) => {
               </div>
               <div>
                 <Link to={`/book/${book.id}`}>
-                  <h3 className="font-bold mt-2 my-2 text-2xl">
+                  <h3 className="font-bold text-orange-600 hover:underline mt-2 my-2 text-2xl">
                     {book.volumeInfo.title}
                   </h3>
                 </Link>
