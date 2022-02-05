@@ -17,7 +17,7 @@ const Authors = () => {
         setAuthors(info.data.items);
       })
       .catch((err) => {
-        console.log("something went wrong");
+        console.log("something went wrong", err);
       });
   }, []);
 
