@@ -11,7 +11,7 @@ const Author = (props) => {
         `https://www.googleapis.com/books/v1/volumes/?q=inauthor:${props.match.params.name}`
       )
       .then((info) => {
-        console.log(info);
+        console.log(info.data.items);
         setAuthor(info.data.items);
       })
       .catch((err) => {
