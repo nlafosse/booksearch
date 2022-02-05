@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { BiSearchAlt } from "react-icons/bi";
 import axios from "axios";
 
@@ -8,10 +8,41 @@ const Authors = () => {
   const [authors, setAuthors] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
+  let letters = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+
+  letters = letters[Math.floor(Math.random() * letters.length)];
+
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=vonnegut&key=${process.env.REACT_APP_BOOKS_API_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${letters}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
       )
       .then((info) => {
         setAuthors(info.data.items);
@@ -51,16 +82,31 @@ const Authors = () => {
 
       <div>
         <section className="relative mt-11 grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <ul>
-            <li>author</li>
-            <li>author</li>
-            <li>author</li>
-            <li>author</li>
-            <li>author</li>
-            <li>author</li>
-            <li>author</li>
-          </ul>
+          {authors.map((author) => {
+            return (
+              <article className="bg-amber-50 py-5 px-10 rounded-lg sm:px-5">
+                <div>
+                  {author.volumeInfo.authors.map((name) => {
+                    return (
+                      <Link to={`/authors/${name.split(" ").join("+")}`}>
+                        <p>{author.volumeInfo.authors}</p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </article>
+            );
+          })}
         </section>
+        <ul>
+          <li>author</li>
+          <li>author</li>
+          <li>author</li>
+          <li>author</li>
+          <li>author</li>
+          <li>author</li>
+          <li>author</li>
+        </ul>
       </div>
     </div>
   );

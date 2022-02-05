@@ -8,7 +8,8 @@ const Searchbar = () => {
   const [redirect, setRedirect] = useState(false);
 
   const handleSearch = () => {
-    setSearchText(text.split(" ").join("+"));
+    setSearchText(text);
+    // setSearchText(text.split(" ").join("+"));
     setRedirect(true);
   };
 
@@ -26,7 +27,8 @@ const Searchbar = () => {
         }}
         onKeyPress={(e) => {
           if (e.key === "Enter") {
-            handleSearch(text);
+            setText(e.target.value);
+            handleSearch();
           }
         }}
       />

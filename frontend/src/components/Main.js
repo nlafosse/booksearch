@@ -16,11 +16,6 @@ const Main = () => {
       <Switch>
         <Route exact path="/" component={() => <Home />} />
         <Route
-          exact
-          path="/books"
-          component={(props) => <Books {...props} />}
-        />
-        <Route
           path="/books/:title"
           component={(props) => <Books {...props} />}
         />

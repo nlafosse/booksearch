@@ -1,10 +1,12 @@
-import React from "react";
+import Searchbar from "./Searchbar";
 
 const Home = () => {
   return (
     <div className="bg-grey-100">
       <div className="flex flex-col items-center">
         <h1 className="p-2">HOME</h1>
+
+        <Searchbar />
         {/* <div className="p-4">
           <img
             alt="gator surrounded by books"

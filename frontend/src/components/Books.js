@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { CgExternal } from "react-icons/cg";
 import nocover from "../images/nocover.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -13,7 +12,6 @@ const Books = (props) => {
         `https://www.googleapis.com/books/v1/volumes?q=${props.match.params.title}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
       )
       .then((info) => {
-        console.log("info", info);
         setBooks(info.data.items);
       })
       .catch((err) => {
