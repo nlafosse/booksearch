@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { BiSearchAlt } from "react-icons/bi";
+import axios from "axios";
 
 const Authors = () => {
   const [name, setSubject] = useState("");
@@ -13,7 +14,7 @@ const Authors = () => {
 
   return (
     <div className="flex flex-col items-center mt-10">
-      <span className=" w-screen md:w-1/3 h-10 bg-gray-200 cursor-pointer border border-gray-300 text-sm rounded-full flex item-around">
+      <span className="w-3/4 md:w-1/2 h-10 bg-gray-200 cursor-pointer border border-gray-300 text-sm rounded-full flex item-around">
         <input
           type="text"
           value={name}
@@ -33,15 +34,17 @@ const Authors = () => {
       </span>
 
       <div>
-        <ul>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-        </ul>
+        <section className="relative mt-11 grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <ul>
+            <li>author</li>
+            <li>author</li>
+            <li>author</li>
+            <li>author</li>
+            <li>author</li>
+            <li>author</li>
+            <li>author</li>
+          </ul>
+        </section>
       </div>
     </div>
   );
