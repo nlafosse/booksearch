@@ -5,12 +5,28 @@ import axios from "axios";
 
 const Authors = () => {
   const [name, setSubject] = useState("");
+  const [authors, setAuthors] = useState([]);
   const [redirect, setRedirect] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=vonnegut&key=${process.env.REACT_APP_BOOKS_API_KEY}`
+      )
+      .then((info) => {
+        setAuthors(info.data.items);
+      })
+      .catch((err) => {
+        console.log("something went wrong");
+      });
+  }, []);
 
   const handleSearch = () => {
     setSubject(name);
     setRedirect(true);
   };
+
+  console.log("authors", authors);
 
   return (
     <div className="flex flex-col items-center mt-10">
