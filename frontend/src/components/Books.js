@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import nocover from "../images/nocover.jpg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Searchbar from "./Searchbar";
 
 const Books = (props) => {
   const [books, setBooks] = useState([]);
@@ -22,8 +23,9 @@ const Books = (props) => {
   console.log("books hook:", books);
 
   return (
-    <div>
-      <section className="relative mt-11 grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="flex flex-col items-center">
+      <Searchbar />
+      <section className="relative mt-10 grid grid-cols-1 gap-10 px-5 pb-20 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {books.map((book) => {
           return (
             <article className="bg-amber-50 py-5 px-10 rounded-lg sm:px-5">

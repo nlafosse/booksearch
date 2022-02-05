@@ -8,7 +8,7 @@ const Authors = () => {
   const [authors, setAuthors] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
-  let letters = [
+  const letters = [
     "a",
     "b",
     "c",
@@ -37,12 +37,12 @@ const Authors = () => {
     "z",
   ];
 
-  letters = letters[Math.floor(Math.random() * letters.length)];
+  let randomLetter = letters[Math.floor(Math.random() * letters.length)];
 
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${letters}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${randomLetter}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
       )
       .then((info) => {
         setAuthors(info.data.items);
@@ -98,15 +98,6 @@ const Authors = () => {
             );
           })}
         </section>
-        <ul>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-          <li>author</li>
-        </ul>
       </div>
     </div>
   );
