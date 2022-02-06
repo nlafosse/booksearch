@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import nocover from "../images/nocover.jpg";
+import Searchbar from "./Searchbar";
 
 const Book = (props) => {
   const [book, setBook] = useState({});
@@ -30,7 +30,7 @@ const Book = (props) => {
   console.log("authorName", authorName);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex flex-col items-center">
       <article className="m-10 md:w-1/2 bg-gray-100 py-5 px-10 rounded-lg sm:px-5">
         <img src={images.thumbnail} className="box-border rounded h-64" />
         <h2 className="font-bold">{book.title}</h2>

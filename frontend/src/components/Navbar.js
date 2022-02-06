@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Searchbar from "./Searchbar";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   let links = [
+    { name: "Books", link: "/" },
     { name: "Authors", link: "/authors" },
     { name: "Subjects", link: "/subjects" },
   ];
@@ -17,6 +19,8 @@ const NavBar = () => {
             <h2 className="hover:text-white duration-500 pr-20">Booklisted</h2>
           </Link>
         </div>
+
+        <Searchbar />
 
         <div
           onClick={() => setOpen(!open)}

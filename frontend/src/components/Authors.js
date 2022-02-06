@@ -8,50 +8,6 @@ const Authors = () => {
   const [authors, setAuthors] = useState([]);
   const [redirect, setRedirect] = useState(false);
 
-  const letters = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
-
-  let randomLetter = letters[Math.floor(Math.random() * letters.length)];
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${randomLetter}&key=${process.env.REACT_APP_BOOKS_API_KEY}`
-      )
-      .then((info) => {
-        setAuthors(info.data.items);
-      })
-      .catch((err) => {
-        console.log("something went wrong", err);
-      });
-  }, []);
-
   const handleSearch = () => {
     setSubject(name);
     setRedirect(true);

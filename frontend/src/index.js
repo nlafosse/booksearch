@@ -5,7 +5,7 @@ import Main from "./components/Main";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter forceRefresh={true}>
     <Main />
   </BrowserRouter>,
   document.getElementById("root")

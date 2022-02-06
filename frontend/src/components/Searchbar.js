@@ -7,11 +7,6 @@ const Searchbar = () => {
   const [searchText, setSearchText] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const handleSearch = () => {
-    setSearchText(text);
-    setRedirect(true);
-  };
-
   console.log("key pressed", text);
 
   return (
@@ -26,12 +21,18 @@ const Searchbar = () => {
         }}
         onKeyPress={(e) => {
           if (e.key === "Enter") {
-            setText(e.target.value);
-            handleSearch();
+            setSearchText(text);
+            setRedirect(true);
           }
         }}
       />
-      <i className="m-3 text-lg text-black w-4" onClick={handleSearch}>
+      <i
+        className="m-3 text-lg text-black w-4"
+        onClick={() => {
+          setSearchText(text);
+          setRedirect(true);
+        }}
+      >
         <BiSearchAlt />
       </i>
       {redirect && <Redirect to={`/books/${searchText}`} />}
